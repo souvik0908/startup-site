@@ -89,13 +89,13 @@ export default function Home() {
           href="mailto:founder@yourdomain.com"
           className="mt-8 inline-block text-blue-400 hover:text-blue-300"
         >
-          founder@yourdomain.com →
+          contact@gitpay.me →
         </a>
       </section>
 
       <footer className="border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col justify-between gap-4 px-6 py-8 text-sm text-gray-500 sm:flex-row">
-          <span>© 2026 NovaForge</span>
+          <span>© 2026 Gitpay</span>
           <span>Early-stage technology project</span>
         </div>
       </footer>
