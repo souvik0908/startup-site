@@ -27,7 +27,7 @@ export default function Home() {
         </h1>
 
         <p className="mt-7 max-w-2xl text-lg leading-8 text-gray-400">
-          NovaForge is building an AI-powered platform that helps businesses
+          Gitpay is building an AI-powered platform that helps businesses
           automate repetitive workflows, connect their data, and create
           intelligent AI agents.
         </p>
@@ -80,7 +80,7 @@ export default function Home() {
         </h2>
 
         <p className="mx-auto mt-5 max-w-2xl leading-7 text-gray-400">
-          NovaForge is an early-stage technology project currently under
+          Gitpay is an early-stage technology project currently under
           development. We&apos;re building and testing the first version of
           the platform.
         </p>
