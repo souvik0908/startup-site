@@ -3,7 +3,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#070b14] text-white">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-7">
         <div className="text-xl font-bold tracking-tight">
-          NovaForge
+          GitPay
         </div>
 
         <a
