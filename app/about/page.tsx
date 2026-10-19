@@ -13,14 +13,7 @@ export const metadata: Metadata = {
 
 const facts = [
   { label: "Company", value: company.name },
-  { label: "Website", value: company.url, href: company.url },
   { label: "Email", value: company.email, href: mailto },
-  {
-    label: "This website",
-    value: company.github,
-    href: company.github,
-    external: true,
-  },
 ];
 
 export default function AboutPage() {
@@ -54,9 +47,6 @@ export default function AboutPage() {
                     <a
                       href={fact.href}
                       className="underline decoration-line underline-offset-4 hover:decoration-ink"
-                      {...(fact.external
-                        ? { target: "_blank", rel: "noopener noreferrer" }
-                        : {})}
                     >
                       {fact.value}
                     </a>

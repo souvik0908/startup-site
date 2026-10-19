@@ -59,22 +59,11 @@ export function SiteFooter() {
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-8 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <p>© 2026 {company.name}</p>
         <nav aria-label="Footer" className="flex flex-wrap gap-x-5 gap-y-2">
-          <Link href="/" className="hover:text-cream">
-            Home
-          </Link>
           <Link href="/about" className="hover:text-cream">
             About
           </Link>
           <a href={mailto} className="break-all hover:text-cream">
             {company.email}
-          </a>
-          <a
-            href={company.github}
-            className="break-all hover:text-cream"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {company.githubLabel}
           </a>
         </nav>
       </div>

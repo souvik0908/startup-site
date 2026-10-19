@@ -197,32 +197,6 @@ export default function Home() {
             >
               {company.email}
             </a>
-            <dl className="mt-8 space-y-4 text-sm">
-              <div>
-                <dt className="text-mist">Website</dt>
-                <dd className="mt-1">
-                  <a
-                    href={company.url}
-                    className="font-medium text-cream underline decoration-white/25 underline-offset-4 hover:decoration-cream"
-                  >
-                    {company.url}
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt className="text-mist">Project</dt>
-                <dd className="mt-1">
-                  <a
-                    href={company.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium break-all text-cream underline decoration-white/25 underline-offset-4 hover:decoration-cream"
-                  >
-                    {company.github}
-                  </a>
-                </dd>
-              </div>
-            </dl>
           </div>
         </div>
       </section>
