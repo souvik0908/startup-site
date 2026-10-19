@@ -1,7 +1,15 @@
 @import "tailwindcss";
 
-* {
-  box-sizing: border-box;
+@theme inline {
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --color-paper: #f3efe6;
+  --color-ink: #14211c;
+  --color-muted: #4f5852;
+  --color-line: #d8d0c2;
+  --color-card: #fffdf8;
+  --color-pine: #1b6546;
+  --color-pine-deep: #124832;
 }
 
 html {
@@ -10,5 +18,14 @@ html {
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: #cfe3d8;
+  color: #14211c;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-pine-deep);
+  outline-offset: 3px;
 }
