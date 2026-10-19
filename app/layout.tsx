@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Newsreader, Outfit } from "next/font/google";
 import { SiteFooter, SiteHeader } from "@/app/components/site-chrome";
 import { company } from "@/app/lib/company";
@@ -12,11 +12,16 @@ const outfit = Outfit({
 
 const newsreader = Newsreader({
   subsets: ["latin"],
+  style: ["normal", "italic"],
   variable: "--font-newsreader",
   display: "swap",
 });
 
 const title = "Gittpay | AI-powered workflow automation";
+
+export const viewport: Viewport = {
+  themeColor: "#101614",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(company.url),

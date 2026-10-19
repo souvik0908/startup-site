@@ -1,3 +1,4 @@
+import { RequestAccess } from "@/app/components/site-chrome";
 import { company, mailto } from "@/app/lib/company";
 
 const steps = [
@@ -33,164 +34,189 @@ const audiences = [
   },
 ];
 
+const run = [
+  {
+    title: "Attach the invoice row",
+    detail: "The spreadsheet, the ticket, and the thread around them.",
+  },
+  {
+    title: "Draft the follow-up",
+    detail: "The agent writes from that same context.",
+  },
+  {
+    title: "Hand it back",
+    detail: "A person reviews the draft before anything is sent.",
+  },
+];
+
 export default function Home() {
   return (
     <main>
-      <section className="mx-auto grid max-w-5xl gap-10 px-6 pb-16 pt-12 sm:pt-16 lg:grid-cols-[minmax(0,1.35fr)_minmax(17rem,0.75fr)] lg:items-end lg:gap-16 lg:pb-24 lg:pt-20">
-        <div>
-          <p className="text-sm font-medium tracking-wide text-pine-deep">
-            Early-stage company · MVP in progress
+      <section className="hero-surface text-cream">
+        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20 lg:py-24">
+          <p className="rise-in inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-cream">
+            <span
+              className="pulse-dot h-1.5 w-1.5 rounded-full bg-signal"
+              aria-hidden="true"
+            />
+            Pre-launch · MVP in progress
           </p>
-          <h1 className="mt-4 font-display text-5xl leading-none tracking-tight text-ink sm:text-6xl">
-            {company.name}
+          <h1 className="rise-in delay-1 mt-6 max-w-5xl text-balance font-display text-[clamp(2.7rem,6vw,5.35rem)] leading-[0.96] tracking-tight text-cream">
+            An agent for the{" "}
+            <span className="italic text-signal">work that repeats.</span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-ink">
-            {company.sentence}
-          </p>
-          <p className="mt-4 max-w-xl leading-7 text-muted">
-            For operations, support, and admin teams that still move the same
-            information between email, spreadsheets, and internal tools.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              href={mailto}
-              className="inline-flex items-center justify-center rounded-md bg-pine px-5 py-3 text-sm font-semibold text-white hover:bg-pine-deep"
-            >
-              {company.email}
-            </a>
-            <a
-              href={company.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-md border border-line bg-card px-5 py-3 text-sm font-semibold text-ink hover:border-ink"
-            >
-              View the project
-            </a>
+          <div className="mt-10 grid items-start gap-12 lg:mt-14 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-16">
+            <div className="rise-in delay-2 min-w-0">
+              <p className="max-w-xl text-lg leading-8 text-mist sm:text-xl sm:leading-9">
+                {company.sentence}
+              </p>
+              <div className="mt-8">
+                <RequestAccess href={mailto} />
+                <p className="mt-3 text-sm text-mist">{company.email}</p>
+              </div>
+            </div>
+
+            <aside className="rise-in delay-3 min-w-0 rounded-3xl bg-card p-6 text-ink shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:p-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+                Example run
+              </p>
+              <p className="mt-3 font-display text-3xl leading-tight tracking-tight">
+                Invoice follow-up
+              </p>
+              <ol className="mt-6">
+                {run.map((item, index) => (
+                  <li key={item.title} className="relative flex gap-4 pb-5 last:pb-0">
+                    {index < run.length - 1 ? (
+                      <span
+                        aria-hidden="true"
+                        className="absolute top-4 bottom-0 left-[7px] w-px bg-line"
+                      />
+                    ) : null}
+                    <span
+                      aria-hidden="true"
+                      className={`relative mt-1.5 h-4 w-4 shrink-0 rounded-full border-2 ${
+                        index === run.length - 1
+                          ? "border-signal bg-signal"
+                          : "border-ink bg-card"
+                      }`}
+                    />
+                    <div className="min-w-0">
+                      <p className="font-semibold leading-6">{item.title}</p>
+                      <p className="mt-1 text-sm leading-6 text-muted">
+                        {item.detail}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-6 border-t border-line pt-4 text-sm leading-6 text-muted">
+                An illustration of the work {company.name} is being built for.
+                The MVP is still in progress.
+              </p>
+            </aside>
           </div>
         </div>
-
-        <aside className="rounded-lg border border-line bg-card p-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
-            Current status
-          </p>
-          <p className="mt-3 font-display text-3xl leading-tight text-ink">
-            MVP in progress
-          </p>
-          <p className="mt-3 text-sm leading-6 text-muted">
-            Private beta comes after the first version is ready to test with a
-            small group. {company.name} is not publishing customers, revenue, or
-            usage numbers.
-          </p>
-          <dl className="mt-6 space-y-3 border-t border-line pt-5 text-sm">
-            <div className="flex items-baseline justify-between gap-4">
-              <dt className="text-muted">Website</dt>
-              <dd>
-                <a
-                  href={company.url}
-                  className="font-medium text-ink underline decoration-line underline-offset-4 hover:decoration-ink"
-                >
-                  {company.host}
-                </a>
-              </dd>
-            </div>
-            <div className="flex items-baseline justify-between gap-4">
-              <dt className="text-muted">Email</dt>
-              <dd>
-                <a
-                  href={mailto}
-                  className="font-medium text-ink underline decoration-line underline-offset-4 hover:decoration-ink"
-                >
-                  {company.email}
-                </a>
-              </dd>
-            </div>
-          </dl>
-        </aside>
       </section>
 
-      <section className="border-y border-line bg-card">
-        <div className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
-          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">
-            How {company.name} is being built to work
-          </h2>
-          <p className="mt-4 max-w-2xl leading-7 text-muted">
-            The product is still in development. These are the three steps the
-            platform is designed around.
+      <section className="bg-paper" id="how">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-signal-deep">
+            How it works
           </p>
-          <ol className="mt-10 grid gap-8 md:grid-cols-3">
+          <h2 className="mt-3 max-w-3xl font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl">
+            Three steps. A person still owns the result.
+          </h2>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">
+            The product is still in development. This is the path the platform
+            is designed around.
+          </p>
+          <ol className="mt-12 border-t border-line">
             {steps.map((step) => (
-              <li key={step.number}>
-                <p className="font-display text-2xl text-pine">{step.number}</p>
-                <h3 className="mt-3 text-lg font-semibold">{step.title}</h3>
-                <p className="mt-2 leading-7 text-muted">{step.body}</p>
+              <li
+                key={step.number}
+                className="grid gap-3 border-b border-line py-8 md:grid-cols-[7.5rem_minmax(0,0.8fr)_minmax(0,1.15fr)] md:items-baseline md:gap-8 md:py-10"
+              >
+                <p className="font-display text-5xl leading-none text-signal">
+                  {step.number}
+                </p>
+                <h3 className="font-display text-3xl leading-tight tracking-tight md:text-4xl">
+                  {step.title}
+                </h3>
+                <p className="max-w-prose leading-7 text-muted">{step.body}</p>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
-        <h2 className="font-display text-3xl tracking-tight sm:text-4xl">
-          Who it is for
-        </h2>
-        <p className="mt-4 max-w-2xl leading-7 text-muted">
-          {company.name} is for teams inside a business. It is not a consumer
-          product.
-        </p>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {audiences.map((audience) => (
-            <article
-              key={audience.title}
-              className="border-t-2 border-pine pt-5"
-            >
-              <h3 className="text-lg font-semibold">{audience.title}</h3>
-              <p className="mt-2 leading-7 text-muted">{audience.body}</p>
-            </article>
-          ))}
+      <section className="border-t border-line bg-bone">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+          <h2 className="font-display text-4xl tracking-tight sm:text-5xl">
+            Who it is for
+          </h2>
+          <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">
+            {company.name} is for teams inside a business. It is not a consumer
+            product.
+          </p>
+          <div className="mt-10 divide-y divide-line border-y border-ink/15">
+            {audiences.map((audience) => (
+              <article
+                key={audience.title}
+                className="grid gap-2 py-6 sm:grid-cols-12 sm:items-baseline sm:gap-8 sm:py-7"
+              >
+                <h3 className="font-display text-3xl tracking-tight sm:col-span-4">
+                  {audience.title}
+                </h3>
+                <p className="leading-7 text-muted sm:col-span-8">
+                  {audience.body}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="contact" className="border-t border-line">
-        <div className="mx-auto grid max-w-5xl gap-8 px-6 py-16 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-          <div>
-            <h2 className="font-display text-3xl tracking-tight sm:text-4xl">
-              Contact {company.name}
+      <section id="contact" className="bg-night text-cream">
+        <div className="mx-auto grid max-w-6xl items-start gap-10 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-2 lg:gap-16">
+          <div className="min-w-0">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-signal">
+              Contact
+            </p>
+            <h2 className="mt-3 font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl">
+              Request access.
             </h2>
-            <p className="mt-4 max-w-md leading-7 text-muted">
-              This is the public company address. Use it for questions about
-              the product or the build.
+            <p className="mt-5 max-w-md text-lg leading-8 text-mist">
+              One address for questions about the product or the build.
             </p>
           </div>
-          <div className="rounded-lg border border-line bg-card p-6 sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
-              Email
-            </p>
+          <div className="min-w-0">
+            <RequestAccess href={mailto} />
             <a
               href={mailto}
-              className="mt-3 block break-all font-display text-3xl tracking-tight text-ink underline decoration-line underline-offset-4 hover:decoration-ink sm:text-4xl"
+              className="mt-6 block break-all font-display text-[clamp(1.7rem,4vw,3rem)] leading-tight tracking-tight text-cream underline decoration-white/25 underline-offset-8 hover:decoration-signal"
             >
               {company.email}
             </a>
             <dl className="mt-8 space-y-4 text-sm">
               <div>
-                <dt className="text-muted">Website</dt>
+                <dt className="text-mist">Website</dt>
                 <dd className="mt-1">
                   <a
                     href={company.url}
-                    className="font-medium text-ink underline decoration-line underline-offset-4 hover:decoration-ink"
+                    className="font-medium text-cream underline decoration-white/25 underline-offset-4 hover:decoration-cream"
                   >
                     {company.url}
                   </a>
                 </dd>
               </div>
               <div>
-                <dt className="text-muted">Project</dt>
+                <dt className="text-mist">Project</dt>
                 <dd className="mt-1">
                   <a
                     href={company.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium break-all text-ink underline decoration-line underline-offset-4 hover:decoration-ink"
+                    className="font-medium break-all text-cream underline decoration-white/25 underline-offset-4 hover:decoration-cream"
                   >
                     {company.github}
                   </a>
