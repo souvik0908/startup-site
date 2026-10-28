@@ -1,205 +1,238 @@
-import { RequestAccess } from "@/app/components/site-chrome";
-import { company, mailto } from "@/app/lib/company";
+import Image from "next/image";
+import Link from "next/link";
+import { Closing, Picture } from "@/app/components/blocks";
+import { company } from "@/app/lib/company";
+
+const pillars = [
+  {
+    label: "What",
+    title: "A pod on the shoot the insects are using",
+    body: "Kerria ties a small sensor to the broodlac bundle, then leaves it on that branch. It reads temperature, humidity, and leaf wetness on the shoot itself, instead of a district weather average.",
+  },
+  {
+    label: "Why",
+    title: "The crop is decided in a few days",
+    body: "Broodlac cannot be stored. Crawlers leave in a short window, and that window shifts with the season and the host. After they settle, fog, mist, or hard rain can wash them off.",
+  },
+  {
+    label: "How",
+    title: "A hamlet gateway, then a phone call",
+    body: "Pods talk to one solar gateway in the village. The grower gets a text or a Hindi voice call. The phone does not need internet, and the pod does not need the grower’s data plan.",
+  },
+];
 
 const steps = [
   {
-    number: "01",
-    title: "Connect data",
-    body: "Attach the records, documents, and tools a workflow already depends on, so the agent has the same context a person would use.",
+    n: "01",
+    title: "Tie it to the bundle",
+    body: "Before inoculation, the pod goes on the broodlac bundle. After the crawlers move onto the shoot, it stays there for the weeks when the insects are easiest to lose.",
   },
   {
-    number: "02",
-    title: "Define the work",
-    body: "Describe the steps that repeat, and mark the points where someone on the team should review the result before it moves on.",
+    n: "02",
+    title: "Follow that tree",
+    body: "The timing follows heat on that shoot, the crop, and the host — palas, ber, or kusum. Baisakhi, katki, jethwi, and aghani do not share one calendar date.",
   },
   {
-    number: "03",
-    title: "Run an agent",
-    body: "An agent follows that workflow. The team that owns the outcome stays responsible for it.",
-  },
-];
-
-const audiences = [
-  {
-    title: "Operations",
-    body: "Daily handoffs, checklists, and status updates that currently live in inboxes and shared documents.",
-  },
-  {
-    title: "Support",
-    body: "Repeated questions that need the same company context every time they are answered.",
-  },
-  {
-    title: "Admin and finance",
-    body: "Information that still gets copied by hand between spreadsheets and internal tools.",
+    n: "03",
+    title: "Call before the window",
+    body: "The gateway sends two kinds of warning: crawlers are close, so tie or watch the bundle today; and fog hours or rain are high enough to threaten insects that just settled.",
   },
 ];
 
-const run = [
+const crops = [
+  ["Baisakhi", "Rangeeni", "Palas, ber", "Tied in Oct–Nov"],
+  ["Katki", "Rangeeni", "Palas", "Tied in Jun–Jul"],
+  ["Jethwi", "Kusmi", "Kusum, ber", "Tied in Jan–Feb"],
+  ["Aghani", "Kusmi", "Kusum, ber", "Tied in Jun–Jul"],
+];
+
+const buyers = [
   {
-    title: "Attach the invoice row",
-    detail: "The spreadsheet, the ticket, and the thread around them.",
+    title: "Lac grower groups",
+    body: "A few pods shared across members’ trees, rather than a gadget for every branch in a forest.",
   },
   {
-    title: "Draft the follow-up",
-    detail: "The agent writes from that same context.",
+    title: "Forest-produce federations",
+    body: "The organisations that already collect sticklac and can put one gateway in a hamlet.",
   },
   {
-    title: "Hand it back",
-    detail: "A person reviews the draft before anything is sent.",
+    title: "Extension staff",
+    body: "People who already walk these groves and need a reason to visit a tree this week, not next month.",
   },
 ];
 
 export default function Home() {
   return (
     <main>
-      <section className="hero-surface text-cream">
-        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20 lg:py-24">
-          <p className="rise-in inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-cream">
-            <span
-              className="pulse-dot h-1.5 w-1.5 rounded-full bg-signal"
-              aria-hidden="true"
-            />
-            Pre-launch · MVP in progress
-          </p>
-          <h1 className="rise-in delay-1 mt-6 max-w-5xl text-balance font-display text-[clamp(2.7rem,6vw,5.35rem)] leading-[0.96] tracking-tight text-cream">
-            An agent for the{" "}
-            <span className="italic text-signal">work that repeats.</span>
+      <section className="shell grid items-center gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
+        <div>
+          <p className="kicker rise-in">Lac, timed to the insect</p>
+          <h1 className="display rise-in delay-1 mt-4 text-[clamp(3rem,7vw,6.4rem)]">
+            Know the day the crawlers come.
           </h1>
-          <div className="mt-10 grid items-start gap-12 lg:mt-14 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-16">
-            <div className="rise-in delay-2 min-w-0">
-              <p className="max-w-xl text-lg leading-8 text-mist sm:text-xl sm:leading-9">
-                {company.sentence}
+          <p className="lede rise-in delay-2 mt-6 max-w-xl">
+            {company.sentence}
+          </p>
+          <div className="rise-in delay-3 mt-8 flex flex-wrap gap-3">
+            <Link className="btn" href="/product">
+              See the pod
+            </Link>
+            <Link className="btn-ghost" href="/services">
+              What Kerria does
+            </Link>
+          </div>
+        </div>
+        <div className="rise-in delay-2">
+          <div className="frame relative aspect-[4/3]">
+            <Image
+              src="/images/hero-grove.jpg"
+              alt="Dusk in a palas grove, with a small sensor pod tied to a flowering branch"
+              fill
+              priority
+              sizes="(min-width: 1024px) 540px, 100vw"
+              className="object-cover"
+            />
+            <aside className="glass absolute inset-x-3 bottom-3 rounded-2xl p-4 sm:inset-x-auto sm:right-4 sm:w-72">
+              <p className="kicker">Sample reading</p>
+              <p className="mt-1 text-xs leading-5 text-muted">
+                Example message. Not a live tree.
               </p>
-              <div className="mt-8">
-                <RequestAccess href={mailto} />
-                <p className="mt-3 text-sm text-mist">{company.email}</p>
-              </div>
-            </div>
-
-            <aside className="rise-in delay-3 min-w-0 rounded-3xl bg-card p-6 text-ink shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:p-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
-                Example run
-              </p>
-              <p className="mt-3 font-display text-3xl leading-tight tracking-tight">
-                Invoice follow-up
-              </p>
-              <ol className="mt-6">
-                {run.map((item, index) => (
-                  <li key={item.title} className="relative flex gap-4 pb-5 last:pb-0">
-                    {index < run.length - 1 ? (
-                      <span
-                        aria-hidden="true"
-                        className="absolute top-4 bottom-0 left-[7px] w-px bg-line"
-                      />
-                    ) : null}
-                    <span
-                      aria-hidden="true"
-                      className={`relative mt-1.5 h-4 w-4 shrink-0 rounded-full border-2 ${
-                        index === run.length - 1
-                          ? "border-signal bg-signal"
-                          : "border-ink bg-card"
-                      }`}
-                    />
-                    <div className="min-w-0">
-                      <p className="font-semibold leading-6">{item.title}</p>
-                      <p className="mt-1 text-sm leading-6 text-muted">
-                        {item.detail}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-              <p className="mt-6 border-t border-line pt-4 text-sm leading-6 text-muted">
-                An illustration of the work {company.name} is being built for.
-                The MVP is still in progress.
-              </p>
+              <dl className="mt-3 space-y-2 text-sm">
+                <div className="flex justify-between gap-4">
+                  <dt className="text-muted">Shoot</dt>
+                  <dd>Kusum, north face</dd>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <dt className="text-muted">Crawlers</dt>
+                  <dd className="text-amber">Within 36 hours</dd>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <dt className="text-muted">Leaf wetness</dt>
+                  <dd className="text-lac">Fog hours rising</dd>
+                </div>
+              </dl>
             </aside>
           </div>
+          <p className="caption">
+            The intended place for a Kerria pod: on the host branch, not in a shed.
+          </p>
         </div>
       </section>
 
-      <section className="bg-paper" id="how">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-signal-deep">
-            How it works
-          </p>
-          <h2 className="mt-3 max-w-3xl font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl">
-            Three steps. A person still owns the result.
+      <section className="shell py-8">
+        <div className="grid gap-4 md:grid-cols-3">
+          {pillars.map((item) => (
+            <article key={item.label} className="glass rounded-3xl p-6">
+              <p className="kicker">{item.label}</p>
+              <h2 className="display mt-4 text-3xl">{item.title}</h2>
+              <p className="lede mt-4 text-[1rem]">{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="shell grid items-center gap-10 py-16 lg:grid-cols-2">
+        <Picture
+          src="/images/broodlac-pod.jpg"
+          alt="Close view of crimson lac resin on a twig beside a small clip-on sensor"
+          caption="Broodlac on the twig, with the pod clipped beside it. A design picture, not a field installation."
+          ratio="aspect-[4/3]"
+        />
+        <div>
+          <p className="kicker">Why this crop</p>
+          <h2 className="display mt-4 text-[clamp(2.2rem,4vw,3.6rem)]">
+            India grows most of the world’s lac. The timing is still done by eye.
           </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">
-            The product is still in development. This is the path the platform
-            is designed around.
+          <p className="lede mt-5">
+            The insect, Kerria lacca, settles on palas, ber, and kusum and
+            secretes the resin that growers sell as sticklac. Refined, that
+            resin is shellac. The vulnerable days are early: emergence, then the
+            first weeks on the shoot.
           </p>
-          <ol className="mt-12 border-t border-line">
-            {steps.map((step) => (
-              <li
-                key={step.number}
-                className="grid gap-3 border-b border-line py-8 md:grid-cols-[7.5rem_minmax(0,0.8fr)_minmax(0,1.15fr)] md:items-baseline md:gap-8 md:py-10"
-              >
-                <p className="font-display text-5xl leading-none text-signal">
-                  {step.number}
-                </p>
-                <h3 className="font-display text-3xl leading-tight tracking-tight md:text-4xl">
-                  {step.title}
-                </h3>
-                <p className="max-w-prose leading-7 text-muted">{step.body}</p>
-              </li>
-            ))}
-          </ol>
+          <p className="lede mt-4">
+            A missed inoculation, or a night of fog after settlement, is how a
+            season is lost. The trees are scattered along forest edges, which is
+            why the alert is a phone call and not an app that assumes a signal.
+          </p>
+          <Link href="/about" className="btn mt-8">
+            Why Kerria exists
+          </Link>
         </div>
       </section>
 
-      <section className="border-t border-line bg-bone">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
-          <h2 className="font-display text-4xl tracking-tight sm:text-5xl">
-            Who it is for
-          </h2>
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">
-            {company.name} is for teams inside a business. It is not a consumer
-            product.
-          </p>
-          <div className="mt-10 divide-y divide-line border-y border-ink/15">
-            {audiences.map((audience) => (
-              <article
-                key={audience.title}
-                className="grid gap-2 py-6 sm:grid-cols-12 sm:items-baseline sm:gap-8 sm:py-7"
-              >
-                <h3 className="font-display text-3xl tracking-tight sm:col-span-4">
-                  {audience.title}
-                </h3>
-                <p className="leading-7 text-muted sm:col-span-8">
-                  {audience.body}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
+      <section className="shell py-8">
+        <p className="kicker">How it works</p>
+        <h2 className="display mt-4 max-w-3xl text-[clamp(2.2rem,4vw,3.8rem)]">
+          Three moves between the bundle and the grower’s phone.
+        </h2>
+        <ol className="mt-8 grid gap-4 lg:grid-cols-3">
+          {steps.map((step) => (
+            <li key={step.n} className="glass rounded-3xl p-6">
+              <p className="display text-4xl text-amber">{step.n}</p>
+              <h3 className="display mt-4 text-2xl">{step.title}</h3>
+              <p className="lede mt-3 text-[1rem]">{step.body}</p>
+            </li>
+          ))}
+        </ol>
       </section>
 
-      <section id="contact" className="bg-night text-cream">
-        <div className="mx-auto grid max-w-6xl items-start gap-10 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-2 lg:gap-16">
-          <div className="min-w-0">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-signal">
-              Contact
-            </p>
-            <h2 className="mt-3 font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl">
-              Request access.
+      <section className="shell py-16">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <p className="kicker">Crops</p>
+            <h2 className="display mt-4 max-w-xl text-[clamp(2.2rem,4vw,3.6rem)]">
+              Four seasons. The pod follows the shoot.
             </h2>
-            <p className="mt-5 max-w-md text-lg leading-8 text-mist">
-              One address for questions about the product or the build.
-            </p>
           </div>
-          <div className="min-w-0">
-            <RequestAccess href={mailto} />
-            <a
-              href={mailto}
-              className="mt-6 block break-all font-display text-[clamp(1.7rem,4vw,3rem)] leading-tight tracking-tight text-cream underline decoration-white/25 underline-offset-8 hover:decoration-signal"
+          <p className="lede max-w-sm text-[1rem]">
+            These are the usual inoculation months. The reason for a sensor is
+            that the real day moves.
+          </p>
+        </div>
+        <div className="mt-8 overflow-hidden rounded-3xl border border-white/10">
+          <div className="hidden grid-cols-4 gap-4 bg-white/5 px-6 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-muted sm:grid">
+            <span>Crop</span>
+            <span>Strain</span>
+            <span>Usual hosts</span>
+            <span>Bundle tied</span>
+          </div>
+          {crops.map((row) => (
+            <div
+              key={row[0]}
+              className="grid gap-1 border-t border-white/10 px-6 py-4 sm:grid-cols-4 sm:items-center sm:gap-4"
             >
-              {company.email}
-            </a>
-          </div>
+              <p className="display text-2xl">{row[0]}</p>
+              <p>{row[1]}</p>
+              <p className="text-muted">{row[2]}</p>
+              <p className="text-muted">{row[3]}</p>
+            </div>
+          ))}
         </div>
       </section>
+
+      <section className="shell grid gap-4 py-8 md:grid-cols-3">
+        {buyers.map((item) => (
+          <article key={item.title} className="rounded-3xl border border-white/10 p-6">
+            <h2 className="display text-2xl">{item.title}</h2>
+            <p className="lede mt-3 text-[1rem]">{item.body}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="shell grid gap-6 py-12 lg:grid-cols-2">
+        <Picture
+          src="/images/field-alert.jpg"
+          alt="A grower at the edge of a palas grove, looking at a phone"
+          caption="The alert is meant for the phone a grower already carries."
+        />
+        <Picture
+          src="/images/village-gateway.jpg"
+          alt="A small solar radio box on a wooden post at the edge of a hamlet"
+          caption="One gateway for a hamlet of trees, powered from a small panel."
+        />
+      </section>
+
+      <Closing />
     </main>
   );
 }

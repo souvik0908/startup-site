@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Newsreader, Outfit } from "next/font/google";
-import { SiteFooter, SiteHeader } from "@/app/components/site-chrome";
+import { Outfit, Syne } from "next/font/google";
+import { SiteFooter } from "@/app/components/footer";
+import { SiteHeader } from "@/app/components/header";
 import { company } from "@/app/lib/company";
 import "./globals.css";
 
@@ -10,37 +11,40 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const newsreader = Newsreader({
+const syne = Syne({
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-newsreader",
+  variable: "--font-syne",
   display: "swap",
 });
 
-const title = "Gittpay | AI-powered workflow automation";
+const title = "Kerria | Know the day the crawlers come";
 
 export const viewport: Viewport = {
-  themeColor: "#101614",
+  themeColor: "#07110d",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(company.url),
   title: {
     default: title,
-    template: "%s | Gittpay",
+    template: "%s | Kerria",
   },
   description: company.sentence,
   applicationName: company.name,
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   openGraph: {
     title,
     description: company.sentence,
     url: company.url,
     siteName: company.name,
     type: "website",
-    locale: "en_US",
+    locale: "en_IN",
+    images: [
+      {
+        url: "/images/hero-grove.jpg",
+        alt: "A palas grove at dusk with a small sensor pod tied to a branch",
+      },
+    ],
   },
 };
 
@@ -59,16 +63,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${newsreader.variable}`}>
-      <body className="flex min-h-screen flex-col bg-paper font-sans text-ink antialiased">
+    <html lang="en" className={`${outfit.variable} ${syne.variable}`}>
+      <body className="flex min-h-screen flex-col font-sans text-ink antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         />
+        <div className="atmosphere" aria-hidden="true" />
         <SiteHeader />
-        <div className="flex-1">{children}</div>
+        <div className="relative z-10 flex-1">{children}</div>
         <SiteFooter />
       </body>
     </html>
